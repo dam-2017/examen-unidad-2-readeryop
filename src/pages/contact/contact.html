@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Tercera pantalla
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <form [formGroup]="editText">
+<ion-list>
+      <ion-item>
+      <ion-label floating color="primary">
+        Nombre:
+      </ion-label>
+      <ion-input #name formControlName="nombre" [class.invalid]="!editText.valid && (editText.controls.nombre.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="editText.get('nombre').errors && editText.get('nombre').dirty">
+          <p *ngIf="editText.get('nombre').hasError('required') && editText.get('nombre').touched">Introduzca su nombre</p>
+        </ion-item> 
+
+           <ion-item>
+      <ion-label floating color="primary">
+        Apellido materno:
+      </ion-label>
+      <ion-input #name formControlName="materno" [class.invalid]="!editText.valid && (editText.controls.materno.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="editText.get('materno').errors && editText.get('materno').dirty">
+          <p *ngIf="editText.get('materno').hasError('required') && editText.get('materno').touched">Introduzca su apellido materno</p>
+        </ion-item> 
+
+              <ion-item>
+      <ion-label floating color="primary">
+        Apellido paterno:
+      </ion-label>
+      <ion-input #name formControlName="paterno" [class.invalid]="!editText.valid && (editText.controls.paterno.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="editText.get('paterno').errors && editText.get('paterno').dirty">
+          <p *ngIf="editText.get('paterno').hasError('required') && editText.get('paterno').touched">Introduzca su apellido paterno</p>
+        </ion-item> 
+
+    <ion-item>
+      <ion-label floating color="primary">
+        Fecha de nacimiento (aaaa/mm/dd):
+      </ion-label>
+      <ion-input #name formControlName="fecha" [class.invalid]="!editText.valid && (editText.controls.fecha.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="editText.get('fecha').errors && editText.get('fecha').dirty">
+          <p *ngIf="editText.get('fecha').hasError('required') && editText.get('fecha').touched">Introduzca su fecha de nacimiento (aaaa/mm/dd)</p>
+        </ion-item> 
+
+        <ion-item>
+      <ion-label>
+        RFC:
+      </ion-label>
+      </ion-item>
+        
+
+    </ion-list>
+  </form>   
+
+  <button ion-button full> Listo
+    <button (click)="validar()" type="submit" [disabled]="editText.invalid"></button>
+  </button>
+  
+</ion-content>
+

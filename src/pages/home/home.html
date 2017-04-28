@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Acceso
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="editText">
+    <ion-list>
+      <ion-item>
+      <ion-label floating color="primary">
+        Nombre:
+      </ion-label>
+      <ion-input #name formControlName="nombre" [class.invalid]="!editText.valid && (editText.controls.nombre.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="editText.get('nombre').errors && editText.get('nombre').dirty">
+          <p *ngIf="editText.get('nombre').hasError('required') && editText.get('nombre').touched">Introduzca su nombre</p>
+        </ion-item> 
+      <ion-item>
+      <ion-label floating color="primary">
+        Contraseña:
+      </ion-label>
+      <ion-input #password formControlName="email" [class.invalid]="!editText.valid && (editText.controls.email.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+        <ion-item *ngIf="editText.get('email').errors && editText.get('email').dirty">
+          <p *ngIf="editText.get('email').hasError('pattern') && editText.get('email').touched">Ingrese un formato válido</p>
+          <p *ngIf="editText.get('email').hasError('required') && editText.get('email').touched">Introduzca contraseña</p>
+        </ion-item>
+    </ion-list>
+  </form>   
+
+  <button ion-button full> Listo
+    <button (click)="validar()" type="submit" [disabled]="editText.invalid"></button>
+  </button>
+  
+</ion-content>
